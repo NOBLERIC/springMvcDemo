@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Student</title>
+    <th:block th:include="/header/header.html"/>
+</head>
+<body>
+<h2>New Student Form</h2>
+<form method="post" th:object="${studentInstance}"  th:action="@{/student}">
+    <div>
+        <label for="name">Student Name</label>
+        <input type="text" id="name" th:field="${studentInstance.name}"/>
+    </div>
+    <div>
+        <label for="dob">Student Date of Birth</label>
+        <input type="date" id="dob" th:field="${studentInstance.dob}"/>
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!--html:5-->
+<!doctype html>
+<!--write manually-->
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<header>
+    <nav>
+        <di>
+<!--            action in servlet is replaced by th:href="@{/path}"-->
+            <a href="/" th:href="@{/}" >Home</a>
+            <a href="/student/add" th:href="@{/student/add}" >Create Student</a>
+        </di>
+    </nav>
+</header>
+</body>
+</html>
