@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
 
 @Controller
 public class StudentController {
@@ -33,7 +32,7 @@ public class StudentController {
         model.addAttribute("studentInstance",new Student());
         return "edit";
     }
-    @RequestMapping(path = "/student",method = RequestMethod.POST)
+    @RequestMapping(path = "/students",method = RequestMethod.POST)
     public String saveStudent(Student student){
         studentService.saveStudent(student);
         return "redirect:/";
@@ -44,5 +43,18 @@ public class StudentController {
     public String getAllStudent(Model model){
         model.addAttribute("students",studentService.getAllStudents());
         return "studentsList";
+    }
+
+    @RequestMapping(path = "/students/edit/{id}",method = RequestMethod.GET)
+    public String updateStudent(@PathVariable(value = "id") String id,Model model){
+        model.addAttribute("studentInstance",studentService.findStudent(id));
+        return "edit";
+    }
+
+    //deleting student without confirmation
+    @RequestMapping(path = "/students/delete/{id}",method = RequestMethod.GET)
+    public String deleteStudent(@PathVariable(value = "id") String id){
+        studentService.deleteStudent(id);
+        return "redirect:/students";
     }
 }

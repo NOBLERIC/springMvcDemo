@@ -1,21 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student List</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Students List</title>
     <th:block th:include="header/header.html"/>
 </head>
 <body>
 <div th:if="${not #lists.isEmpty(students)}">
-    <h2>Students List</h2>
-    <table>
+<h2>Students List</h2>
+<table>
     <tr>
-        <th>Names</th>
+        <th>Name</th>
         <th>Date of Birth</th>
         <th>Actions</th>
     </tr>
-    <tr th:each="student: ${students}">
+    <tr th:each="student:${students}">
         <td th:text="${student.name}">Name</td>
         <td th:text="${student.dob}">Date of Birth</td>
         <td>
@@ -24,7 +27,9 @@
         </td>
     </tr>
 </table>
-
+</div>
+<div th:if="${#lists.isEmpty(students)}">
+    <p>Ooops! No student yet</p>
 </div>
 </body>
 </html>
