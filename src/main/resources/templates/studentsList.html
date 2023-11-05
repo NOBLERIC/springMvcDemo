@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <th:block th:include="header/header.html"/>
+</head>
+<body>
+<div th:if="${not #lists.isEmpty(students)}">
+    <h2>Students List</h2>
+    <table>
+    <tr>
+        <th>Names</th>
+        <th>Date of Birth</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.name}">Name</td>
+        <td th:text="${student.dob}">Date of Birth</td>
+        <td>
+            <a th:href="${'/students/edit/'+student.id}">Edit</a>
+            <a th:href="${'/students/delete/'+student.id}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</div>
+</body>
+</html>

@@ -12,12 +12,18 @@
 <body>
 <header>
     <nav>
-        <di>
+        <div>
 <!--            action in servlet is replaced by th:href="@{/path}"-->
             <a href="/" th:href="@{/}" >Home</a>
             <a href="/student/add" th:href="@{/student/add}" >Create Student</a>
-        </di>
+            <a href="/students" th:href="@{/students}" >List Students</a>
+            <hr/>
+        </div>
     </nav>
+    <div>
+        <img src="/static/spring-mvc-demo-logo.png" th:src="@{/spring-mvc-demo-logo.png}">
+    </div>
+    <hr/>
 </header>
 </body>
 </html>
